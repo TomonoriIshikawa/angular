@@ -1,0 +1,29 @@
+
+<form [formGroup]="todoList">
+
+  <div formArrayName="todos">
+    <h3>Todo</h3>
+
+    <button (click)="addTodos()">Add Todo</button>
+    <div *ngFor="let todo of getTodos().controls; let i=index;">
+
+      <div [formGroupName]="i">
+
+          <div>
+            <button (click)="removeTodo(i)">Delete</button>
+          </div>
+        <label>
+          todo:
+          <input type="text" class="form-control" formControlName="todo"/>
+        </label>
+
+        <label>
+          <input type="date" class="form-control" formControlName="date"/>
+        </label>
+
+      </div>
+    </div>
+  </div>
+</form>
+
+<p><button (click)="update()">Update</button></p>
